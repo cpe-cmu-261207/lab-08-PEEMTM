@@ -61,6 +61,15 @@ app.get('/todo', (req, res) => {
         return 1;
       return 0; //default return value (no sorting)
     })
+  }else{
+    tasks.sort((a, b) => {
+      var A = a.id, B = b.id;
+      if (A > B) //sort string ascending
+        return 1;
+      if (A < B)
+        return -1;
+      return 0; //default return value (no sorting)
+    })
   }
   return res.json({ status: 'success', tasks })
 })
